@@ -10,6 +10,15 @@ export const CounterApp = ({ value }) => {
         console.log(counter);
     }
 
+    const handleSubstract = () => {
+        setCounter(counter - 1);
+    }
+
+    const handleReset = () => {
+        setCounter(value);
+        // value is 12 because it is the default value, look at the main.jsx file
+    }
+
   return (
     <>
         <h1>CounterApp</h1>
@@ -17,6 +26,14 @@ export const CounterApp = ({ value }) => {
 
         <button onClick={handleAdd}  >
             +1
+        </button>
+
+        <button onClick={handleSubstract}>
+            -1
+        </button>
+
+        <button onClick={handleReset}>
+            Reset
         </button>
     </>
   )
