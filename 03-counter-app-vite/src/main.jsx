@@ -1,15 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom';
-import { HelloWorldApp } from './HelloWorldApp';
-import { FirstApp } from './FirstApp';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { CounterApp } from './CounterApp';
+
+import { FirstApp } from './FirstApp';
+// import { HelloWorldApp } from './HelloWorldApp';
 import './styles.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <HelloWorldApp />
-        <FirstApp title="Probando"  subTitle="cosas"  />
 
-        <CounterApp value={12}/>
+
+ReactDOM.createRoot( document.getElementById('root') ).render(
+    <React.StrictMode>
+        <CounterApp value={ 20 } />
+        {/* <FirstApp title="Hola, Soy Vegeta" /> */}
     </React.StrictMode>
 );
+
+

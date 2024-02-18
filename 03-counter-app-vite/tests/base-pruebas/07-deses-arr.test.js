@@ -1,10 +1,21 @@
-import { retornaArreglo } from "../../src/base-pruebas/07-deses-arr";
+import { retornaArreglo } from '../../src/base-pruebas/07-deses-arr';
 
-describe('PRuebas en 07-deses-arr', () => { 
-    test('Debe retornar un string y un número', () => { 
-        const [letras, numeros] = retornaArreglo();
-        // expect(arr).toEqual(['ABC', 123]);
-        expect(letras).toBe('ABC');
-        expect(numeros).toBe(123);
-    })
- })
+
+describe('Pruebas en 07-deses-arr', () => {
+    
+    test('debe de retornar un string y un número', () => {
+        
+        const [ letters, numbers ] = retornaArreglo();
+        
+        expect( letters ).toBe( 'ABC' );
+        expect( numbers ).toBe( 123 );
+
+        expect(typeof letters).toBe('string')
+        expect(typeof numbers).toBe('number')
+
+        expect( letters ).toEqual( expect.any(String) );
+
+    });
+
+
+});
