@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react'
 
+const localCache = {
+    data: {},
+    time: 0
+
+}
+
 export const useFetch = ( url ) => {
   
     const [state, setState] = useState({ 
@@ -14,6 +20,13 @@ export const useFetch = ( url ) => {
     }, [url])
 
     const getFetch = async() => {
+
+        if (localCache.data[url]) {
+            setState({ data: localCache.data[url], loading: false, hasError: false, error: null })
+            return
+        }
+
+
         try {
             const response = await fetch(url)
 
@@ -32,6 +45,9 @@ export const useFetch = ( url ) => {
 
             const data = await response.json()
             setState({ data, loading: false, hasError: false, error: null })
+
+            localCache.data[url] = data;
+
         } catch (error) {
             setState({ data: null, loading: false, hasError: false, error })
         }
