@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { LoadingMessage } from '../03-examples/LoadingMessage'
 
 export const Layout = () => {
-  const [counter, setCounter] = useState(1); 
+  const [trigger, setTrigger] = useState(0); // Nuevo estado para desencadenar la solicitud
 
-  const { data, hasError, isLoading } = useFetch(`https://api.breakingbadquotes.xyz/v1/quotes`);
+  const { data, hasError, isLoading } = useFetch(`https://api.breakingbadquotes.xyz/v1/quotes?i=${trigger}`); // Agrega el estado al final de la URL para cambiarla cada vez que se hace clic en el botón
 
-    const increment = () => { setCounter(counter + 1) }
-    const decrement = () => { setCounter(counter - 1) }
-  useEffect(() => {
-    console.log('Layout Effect')
-  }, [counter])
+  const changeQuote = () => {
+    setTrigger(trigger + 1); // Cambia el estado cuando se hace clic en el botón
+  };
 
   console.log(data) 
 
@@ -33,18 +31,10 @@ export const Layout = () => {
     
         <button
             className="btn btn-primary"
-            onClick={ increment }
+            onClick={ changeQuote } // Llama a changeQuote cuando se hace clic en el botón
         >
-            Siguiente quote
-        </button>
-
-        <button
-            className="btn btn-primary"
-            onClick={ decrement }
-        >
-            Anterior quote
+            Change quote
         </button>
     </div>
-      
   )
 }
